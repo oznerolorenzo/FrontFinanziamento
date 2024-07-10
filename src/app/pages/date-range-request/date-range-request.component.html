@@ -1,0 +1,45 @@
+<h2>Richieste di Finanziamento per Intervallo di Date</h2>
+<form [formGroup]="dateRangeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="dataMin">Data Minima</label>
+    <input type="date" id="dataMin" formControlName="dataMin" class="form-control" />
+    <div *ngIf="dateRangeForm.get('dataMin')?.invalid && (dateRangeForm.get('dataMin')?.touched || dateRangeForm.get('dataMin')?.dirty)" class="text-danger">
+      Inserisci una data minima valida.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataMax">Data Massima</label>
+    <input type="date" id="dataMax" formControlName="dataMax" class="form-control" />
+    <div *ngIf="dateRangeForm.get('dataMax')?.invalid && (dateRangeForm.get('dataMax')?.touched || dateRangeForm.get('dataMax')?.dirty)" class="text-danger">
+      Inserisci una data massima valida.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="max">Numero Massimo di Richieste</label>
+    <input type="number" id="max" formControlName="max" class="form-control" />
+    <div *ngIf="dateRangeForm.get('max')?.invalid && (dateRangeForm.get('max')?.touched || dateRangeForm.get('max')?.dirty)" class="text-danger">
+      Inserisci un numero massimo valido.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="dateRangeForm.invalid">Cerca</button>
+</form>
+
+<div *ngIf="requests.length > 0" class="mt-4">
+  <h3>Risultati della Ricerca</h3>
+  <ul class="list-group">
+    <li *ngFor="let request of requests" class="list-group-item">
+      <strong>ID:</strong> {{ request.richiestaID }}<br>
+      <strong>Richiedente:</strong> {{ request.cognomeNomeRichiedente }}<br>
+      <strong>Data Inserimento:</strong> {{ request.dataInserimentoRichiesta | date: 'shortDate' }}<br>
+      <strong>Importo:</strong> {{ request.importo | currency: 'EUR' }}<br>
+      <strong>Numero Rate:</strong> {{ request.numeroRate }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="requests.length === 0" class="text-center mt-4">
+  <p>Nessuna richiesta trovata.</p>
+</div>

@@ -1,0 +1,25 @@
+<h2>Somma degli Importi delle Richieste di Finanziamento</h2>
+<form [formGroup]="sumForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="dataMin">Data Minima</label>
+    <input type="date" id="dataMin" formControlName="dataMin" class="form-control" />
+    <div *ngIf="sumForm.get('dataMin')?.invalid && (sumForm.get('dataMin')?.touched || sumForm.get('dataMin')?.dirty)" class="text-danger">
+      Inserisci una data minima valida.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataMax">Data Massima</label>
+    <input type="date" id="dataMax" formControlName="dataMax" class="form-control" />
+    <div *ngIf="sumForm.get('dataMax')?.invalid && (sumForm.get('dataMax')?.touched || sumForm.get('dataMax')?.dirty)" class="text-danger">
+      Inserisci una data massima valida.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="sumForm.invalid">Calcola</button>
+</form>
+
+<div *ngIf="totalSum !== null" class="mt-4">
+  <h3>Somma Totale</h3>
+  <p>{{ totalSum | currency: 'EUR' }}</p>
+</div>

@@ -1,0 +1,36 @@
+<h2>Nuova Richiesta di Finanziamento</h2>
+<form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="cognomeNomeRichiedente">Nome e Cognome del Richiedente</label>
+    <input type="text" id="cognomeNomeRichiedente" formControlName="cognomeNomeRichiedente" class="form-control" />
+    <div *ngIf="requestForm.get('cognomeNomeRichiedente')?.invalid && (requestForm.get('cognomeNomeRichiedente')?.touched || requestForm.get('cognomeNomeRichiedente')?.dirty)" class="text-danger">
+      Inserisci il nome e cognome del richiedente.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="importo">Importo</label>
+    <input type="number" id="importo" formControlName="importo" class="form-control" />
+    <div *ngIf="requestForm.get('importo')?.invalid && (requestForm.get('importo')?.touched || requestForm.get('importo')?.dirty)" class="text-danger">
+      Inserisci un importo valido.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="numeroRate">Numero Rate</label>
+    <input type="number" id="numeroRate" formControlName="numeroRate" class="form-control" />
+    <div *ngIf="requestForm.get('numeroRate')?.invalid && (requestForm.get('numeroRate')?.touched || requestForm.get('numeroRate')?.dirty)" class="text-danger">
+      Inserisci un numero valido di rate.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataInserimentoRichiesta">Data Inserimento Richiesta</label>
+    <input type="date" id="dataInserimentoRichiesta" formControlName="dataInserimentoRichiesta" class="form-control" />
+    <div *ngIf="requestForm.get('dataInserimentoRichiesta')?.invalid && (requestForm.get('dataInserimentoRichiesta')?.touched || requestForm.get('dataInserimentoRichiesta')?.dirty)" class="text-danger">
+      Inserisci una data valida.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="requestForm.invalid">Aggiungi Richiesta</button>
+</form>

@@ -1,0 +1,25 @@
+<h2>Numero Medio delle Rate delle Richieste di Finanziamento</h2>
+<form [formGroup]="averageForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="dataMin">Data Minima</label>
+    <input type="date" id="dataMin" formControlName="dataMin" class="form-control" />
+    <div *ngIf="averageForm.get('dataMin')?.invalid && (averageForm.get('dataMin')?.touched || averageForm.get('dataMin')?.dirty)" class="text-danger">
+      Inserisci una data minima valida.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataMax">Data Massima</label>
+    <input type="date" id="dataMax" formControlName="dataMax" class="form-control" />
+    <div *ngIf="averageForm.get('dataMax')?.invalid && (averageForm.get('dataMax')?.touched || averageForm.get('dataMax')?.dirty)" class="text-danger">
+      Inserisci una data massima valida.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="averageForm.invalid">Calcola</button>
+</form>
+
+<div *ngIf="averageRate !== null" class="mt-4">
+  <h3>Numero Medio delle Rate</h3>
+  <p>{{ averageRate }}</p>
+</div>

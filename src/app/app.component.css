@@ -1,0 +1,16 @@
+.bgcolorNav {
+  background-color: #333333;
+}
+.bgcolorFull {
+  /* background-color: #202020 !important; */
+  /*background-color: #1f1f1f !important;*/
+  min-height: 100vh;
+}
+.navbar-brand {
+  font-size: 21px;
+  color: #a1a5aa;
+  letter-spacing: 2px;
+  font-family: "Poppins", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");

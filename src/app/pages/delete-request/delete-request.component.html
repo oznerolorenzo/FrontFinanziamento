@@ -1,0 +1,19 @@
+<h2>Elimina Richiesta di Finanziamento</h2>
+<form [formGroup]="deleteForm" (ngSubmit)="onDelete()">
+  <div class="form-group">
+    <label for="id">ID Richiesta</label>
+    <input type="text" id="id" formControlName="id" class="form-control" />
+    <div *ngIf="deleteForm.get('id')?.invalid && (deleteForm.get('id')?.touched || deleteForm.get('id')?.dirty)" class="text-danger">
+      Inserisci un ID valido.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-danger" [disabled]="deleteForm.invalid">Elimina</button>
+</form>
+
+<div *ngIf="successMessage" class="mt-4 text-success">
+  <p>{{ successMessage }}</p>
+</div>
+
+<div *ngIf="errorMessage" class="mt-4 text-danger">
+  <p>{{ errorMessage }}</p>
+</div>

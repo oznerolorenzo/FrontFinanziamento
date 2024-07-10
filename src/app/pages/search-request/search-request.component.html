@@ -1,0 +1,28 @@
+<h2>Ricerca Richiesta di Finanziamento</h2>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="search">Nome o Cognome del Richiedente</label>
+    <input type="text" id="search" formControlName="search" class="form-control" />
+    <div *ngIf="searchForm.get('search')?.invalid && (searchForm.get('search')?.touched || searchForm.get('search')?.dirty)" class="text-danger">
+      Inserisci un termine di ricerca valido.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">Cerca</button>
+</form>
+
+<div *ngIf="results.length > 0" class="mt-4">
+  <h3>Risultati della Ricerca</h3>
+  <ul class="list-group">
+    <li *ngFor="let request of results" class="list-group-item">
+      <strong>ID:</strong> {{ request.richiestaID }}<br>
+      <strong>Richiedente:</strong> {{ request.cognomeNomeRichiedente }}<br>
+      <strong>Data Inserimento:</strong> {{ request.dataInserimentoRichiesta | date: 'shortDate' }}<br>
+      <strong>Importo:</strong> {{ request.importo | currency: 'EUR' }}<br>
+      <strong>Numero Rate:</strong> {{ request.numeroRate }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="results.length === 0" class="text-center mt-4">
+  <p>Nessuna richiesta trovata.</p>
+</div>

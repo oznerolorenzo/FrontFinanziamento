@@ -1,0 +1,28 @@
+<h2>Lista Completa delle Richieste di Finanziamento</h2>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>ID Richiesta</th>
+        <th>Richiedente</th>
+        <th>Data Inserimento</th>
+        <th>Importo</th>
+        <th>Numero Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{ request.richiestaID }}</td>
+        <td>{{ request.cognomeNomeRichiedente }}</td>
+        <td>{{ request.dataInserimentoRichiesta | date: 'shortDate' }}</td>
+        <td>{{ request.importo | currency: 'EUR' }}</td>
+        <td>{{ request.numeroRate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="requests.length === 0" class="text-center mt-4">
+  <p>Nessuna richiesta di finanziamento trovata.</p>
+</div>

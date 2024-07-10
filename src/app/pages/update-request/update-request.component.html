@@ -1,0 +1,44 @@
+<h2>Aggiorna Richiesta di Finanziamento</h2>
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="id">ID Richiesta</label>
+    <input type="text" id="id" formControlName="id" class="form-control" />
+    <div *ngIf="updateForm.get('id')?.invalid && (updateForm.get('id')?.touched || updateForm.get('id')?.dirty)" class="text-danger">
+      Inserisci un ID valido.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cognomeNomeRichiedente">Nome e Cognome del Richiedente</label>
+    <input type="text" id="cognomeNomeRichiedente" formControlName="cognomeNomeRichiedente" class="form-control" />
+    <div *ngIf="updateForm.get('cognomeNomeRichiedente')?.invalid && (updateForm.get('cognomeNomeRichiedente')?.touched || updateForm.get('cognomeNomeRichiedente')?.dirty)" class="text-danger">
+      Inserisci il nome e cognome del richiedente.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="importo">Importo</label>
+    <input type="number" id="importo" formControlName="importo" class="form-control" />
+    <div *ngIf="updateForm.get('importo')?.invalid && (updateForm.get('importo')?.touched || updateForm.get('importo')?.dirty)" class="text-danger">
+      Inserisci un importo valido.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="numeroRate">Numero Rate</label>
+    <input type="number" id="numeroRate" formControlName="numeroRate" class="form-control" />
+    <div *ngIf="updateForm.get('numeroRate')?.invalid && (updateForm.get('numeroRate')?.touched || updateForm.get('numeroRate')?.dirty)" class="text-danger">
+      Inserisci un numero valido di rate.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataInserimentoRichiesta">Data Inserimento Richiesta</label>
+    <input type="date" id="dataInserimentoRichiesta" formControlName="dataInserimentoRichiesta" class="form-control" />
+    <div *ngIf="updateForm.get('dataInserimentoRichiesta')?.invalid && (updateForm.get('dataInserimentoRichiesta')?.touched || updateForm.get('dataInserimentoRichiesta')?.dirty)" class="text-danger">
+      Inserisci una data valida.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid">Aggiorna Richiesta</button>
+</form>
